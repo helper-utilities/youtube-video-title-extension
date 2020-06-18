@@ -1,5 +1,5 @@
 // check if window is loaded
-if (window.location.href.includes('https://www.youtube.com/watch*')) {
+if (window.location.href.includes('https://www.youtube.com/watch')) {
 	if (document.readyState === 'complete') {
 		let t;
 		let title;
