@@ -7,12 +7,12 @@ if (window.location.href.includes('https://www.youtube.com/watch')) {
 		// run an interval to make sure the title is loaded to avoid null for querySelectors.
 		t = setInterval(async () => {
 			console.log('interval')
-			title = document.querySelector("#columns #info h1.title").textContent.trim().replace('(lyrics)', '');
+			title = document.querySelector("#columns #info h1.title").textContent.trim().replace(/ \([\s\S][^\-]*\)/gi, '');
 
 			if (title) {
 				// copy to clipboard if we have permission
-				let permission = await navigator.permissions.query({ name: "clipboard-write" }) === 'granted' || 'prompt' ?
-					window.navigator.clipboard.writeText(title) : undefined;
+				if (await navigator.permissions.query({ name: "clipboard-write" }) === 'granted' || 'prompt')
+					window.navigator.clipboard.writeText(title);
 
 				// like video if not liked already (support the creator :) )
 				let likeButton = document.querySelector("#top-level-buttons > ytd-toggle-button-renderer.style-scope.ytd-menu-renderer.force-icon-button");
