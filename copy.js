@@ -9,7 +9,7 @@ if (window.location.href.includes('https://www.youtube.com/watch')) {
 			title = document.querySelector("#columns #info h1.title")
 				.textContent.trim()
 				.replace(/ \([\s\S][^\-]*\)/gi, '')
-				.replace(/&/);
+				.replace(/&[\s\S][^\-]*/gi, '');
 
 			if (title) {
 				// copy to clipboard if we have permission
