@@ -6,8 +6,10 @@ if (window.location.href.includes('https://www.youtube.com/watch')) {
 
 		// run an interval to make sure the title is loaded to avoid null for querySelectors.
 		t = setInterval(async () => {
-			title = document.querySelector("#columns #info h1.title").textContent.trim().replace(/ \([\s\S][^\-]*\)/gi, '');
-			console.log(title)
+			title = document.querySelector("#columns #info h1.title")
+				.textContent.trim()
+				.replace(/ \([\s\S][^\-]*\)/gi, '')
+				.replace(/&/);
 
 			if (title) {
 				// copy to clipboard if we have permission
