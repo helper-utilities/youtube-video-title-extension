@@ -8,8 +8,9 @@ if (window.location.href.includes('https://www.youtube.com/watch')) {
 		t = setInterval(async () => {
 			title = document.querySelector("#columns #info h1.title")
 				.textContent.trim()
-				.replace(/ \([\s\S][^\-]*\)/gi, '')
-				.replace(/&[\s\S][^\-]*/gi, '');
+				.replace(/ \([\s\S][^\-]*\)/gi, '') // remove parantheses text
+				.replace(/ \[[\s\S][^\-]*\]/gi, '') // remove bracket text
+				.replace(/&[\s\S][^\-]*/gi, '') // remove & artists;
 
 			if (title) {
 				// copy to clipboard if we have permission
